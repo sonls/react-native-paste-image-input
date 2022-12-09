@@ -12,29 +12,47 @@
 
 - (BOOL)canPerformAction:(SEL)action withSender:(id)sender
 {
-  if (action == @selector(paste:) && [UIPasteboard generalPasteboard].image)
-    return YES;
-  else
-    return [super canPerformAction:action withSender:sender];
+    BOOL imagePresent = YES;
+    UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
+    if (@available(iOS 10, *)) {
+        imagePresent = clipboard.hasImages;
+    } else {
+        UIImage *imageInPasteboard = clipboard.image;
+        imagePresent = imageInPasteboard != nil;
+    }
+    
+    if (action == @selector(paste:) && imagePresent){
+        return YES;
+    }
+    else{
+        return [super canPerformAction:action withSender:sender];
+    }
 }
 
 -(void)paste:(id)sender {
-  [super paste:sender];
-  
-  if (_onPaste) {
-    if ([UIPasteboard generalPasteboard].image) {
-      UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-      NSArray<NSDictionary *> *files = [pasteboard getCopiedFiles];
-      if (files != nil && files.count > 0) {
-        _onPaste(@{
-          @"data": files,
-        });
-      }
-    } else {
-      return;
+    [super paste:sender];
+    
+    if (_onPaste) {
+        BOOL imagePresent = YES;
+        UIPasteboard *clipboard = [UIPasteboard generalPasteboard];
+        if (@available(iOS 10, *)) {
+            imagePresent = clipboard.hasImages;
+        } else {
+            UIImage *imageInPasteboard = clipboard.image;
+            imagePresent = imageInPasteboard != nil;
+        }
+        if (imagePresent) {
+            NSArray<NSDictionary *> *files = [clipboard getCopiedFiles];
+            if (files != nil && files.count > 0) {
+                _onPaste(@{
+                    @"data": files,
+                });
+            }
+        } else {
+            return;
+        }
     }
-  }
-  // Dismiss contextual menu
-  [self resignFirstResponder];
+    // Dismiss contextual menu
+    //    [self resignFirstResponder];
 }
 @end

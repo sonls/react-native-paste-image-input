@@ -10,7 +10,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BeinTextInputView : RCTMultilineTextInputView
-    @property (nonatomic, copy, nullable) RCTDirectEventBlock onPaste;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onPaste;
 @end
 
 NS_ASSUME_NONNULL_END

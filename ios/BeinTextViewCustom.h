@@ -8,5 +8,5 @@
 #import <React/RCTComponent.h>
 
 @interface BeinTextViewCustom : RCTUITextView
-  @property (nonatomic, copy, nullable) RCTDirectEventBlock onPaste;
+@property (nonatomic, copy, nullable) RCTDirectEventBlock onPaste;
 @end

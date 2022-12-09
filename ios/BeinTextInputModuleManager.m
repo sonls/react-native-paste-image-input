@@ -14,7 +14,7 @@ RCT_EXPORT_MODULE(PasteInput)
 
 - (UIView *)view
 {
-  return [[BeinTextInputView alloc] initWithBridge:self.bridge];
+    return [[BeinTextInputView alloc] initWithBridge:self.bridge];
 }
 
 #pragma mark - Multiline <TextInput> (aka TextView) specific properties
