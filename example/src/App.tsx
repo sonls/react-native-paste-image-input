@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { StyleSheet, View } from 'react-native';
-import PasteInput from 'react-native-paste-image-input';
+import PasteInput from 'src/PasteInput';
 
 export default function App() {
   return (
