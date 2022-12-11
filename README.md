@@ -11,11 +11,11 @@ npm install react-native-paste-image-input
 ## Usage
 
 ```js
-import { multiply } from 'react-native-paste-image-input';
+import PasteInput from 'react-native-paste-image-input';
 
 // ...
 
-const result = await multiply(3, 7);
+
 ```
 
 ## Contributing
