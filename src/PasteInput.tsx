@@ -150,10 +150,11 @@ const PasteInput: ForwardRefRenderFunction<any, PasteInputProps> = (
   }, []);
 
   useEffect(() => {
-    const inputRefValue = inputRef.current;
+    // const inputRefValue = inputRef.current;
     // When unmounting we need to blur the input
     return () => {
-      inputRefValue?.blur();
+      // inputRefValue?.blur();
+      TextInputState.blurInput(inputRef.current);
     };
   }, []);
 
