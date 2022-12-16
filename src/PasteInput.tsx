@@ -154,7 +154,6 @@ const PasteInput: ForwardRefRenderFunction<any, PasteInputProps> = (
     // When unmounting we need to blur the input
     return () => {
       // inputRefValue?.blur();
-      TextInputState.blurInput(inputRef.current);
     };
   }, []);
 
