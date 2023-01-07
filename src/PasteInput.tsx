@@ -1,7 +1,7 @@
 import React, {
   forwardRef,
   ForwardRefRenderFunction,
-  useEffect,
+  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -67,7 +67,7 @@ const PasteInput: ForwardRefRenderFunction<any, PasteInputProps> = (
   const [mostRecentEventCount, setMostRecentEventCount] = useState<number>(0);
   const [lastNativeText, setLastNativeText] = useState<
     string | null | undefined
-  >(props.value);
+  >('');
   const [lastNativeSelectionState, setLastNativeSelection] = useState<{
     selection?: Selection;
     mostRecentEventCount: number;
@@ -92,7 +92,7 @@ const PasteInput: ForwardRefRenderFunction<any, PasteInputProps> = (
   // This is necessary in case native updates the text and JS decides
   // that the update should be ignored and we should stick with the value
   // that we have in JS.
-  useEffect(() => {
+  useLayoutEffect(() => {
     const nativeUpdate: { text?: string; selection?: Selection } = {};
 
     if (lastNativeText !== props.value && typeof props.value === 'string') {
@@ -135,7 +135,7 @@ const PasteInput: ForwardRefRenderFunction<any, PasteInputProps> = (
     viewCommands,
   ]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const inputRefValue = inputRef.current;
 
     if (inputRefValue != null) {
@@ -149,12 +149,17 @@ const PasteInput: ForwardRefRenderFunction<any, PasteInputProps> = (
     };
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     // const inputRefValue = inputRef.current;
     // When unmounting we need to blur the input
     return () => {
       // inputRefValue?.blur();
     };
+  }, []);
+
+  useLayoutEffect(() => {
+    setLastNativeText(props.value || '');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function clear() {
