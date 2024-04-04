@@ -302,7 +302,7 @@ PODS:
   - React-jsinspector (0.70.6)
   - React-logger (0.70.6):
     - glog
-  - react-native-paste-image-input (0.1.0):
+  - react-native-paste-image-input (1.0.0):
     - React-Core
     - Swime (= 3.0.6)
   - React-perflogger (0.70.6)
@@ -565,7 +565,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: b4a65947391c658450151275aa406f2b8263178f
   React-jsinspector: 60769e5a0a6d4b32294a2456077f59d0266f9a8b
   React-logger: 1623c216abaa88974afce404dc8f479406bbc3a0
-  react-native-paste-image-input: e9ee848a663338b713d22bcdf9d6e53828fe57a4
+  react-native-paste-image-input: 22b8fbe38ab1ebea2875723045cf8b5403f1b15e
   React-perflogger: 8c79399b0500a30ee8152d0f9f11beae7fc36595
   React-RCTActionSheet: 7316773acabb374642b926c19aef1c115df5c466
   React-RCTAnimation: 5341e288375451297057391227f691d9b2326c3d
@@ -585,4 +585,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 7353c312228334f0abe49b8be014e82205a24503
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.15.2

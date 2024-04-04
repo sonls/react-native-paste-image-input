@@ -25,7 +25,7 @@ import type {
   TextInputNativeCommands,
 } from './types';
 import TextInputState from 'react-native/Libraries/Components/TextInput/TextInputState';
-import setAndForwardRef from 'react-native/Libraries/Utilities/setAndForwardRef';
+import setAndForwardRef from './setAndForwardRef';
 import TextAncestor from 'react-native/Libraries/Text/TextAncestor';
 
 const LINKING_ERROR =
